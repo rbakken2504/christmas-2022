@@ -1,0 +1,20 @@
+<ngx-typed-js *ngIf="!messageComplete || !playerReady"
+              [strings]="['A message is being prepared for you.', 'Gather everyone around and make sure your volume is on.']"
+              [typeSpeed]="70"
+              [showCursor]="false"
+              (completed)="onMessageComplete()">
+  <h1 class="typing"></h1>
+</ngx-typed-js>
+<div *ngIf="messageComplete && playerReady" class="btn-container">
+  <ngx-typed-js [strings]="['Are you ready?']" [typeSpeed]="70" [showCursor]="false" (completed)="showYesBtn = true;">
+    <h1 class="typing"></h1>
+  </ngx-typed-js>
+  <div *ngIf="showYesBtn" class="btn" (click)="onYesClick()">Yes</div>
+</div>
+<youtube-player [style.display]="(show ? 'block' : 'none')"
+                #ytPlayer
+                videoId="ihQjfVHg4_k"
+                [playerVars]="playerVariables"
+                (ready)="playerReady = true;"
+                (stateChange)="onStateChange($event)">
+</youtube-player>
