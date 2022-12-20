@@ -9,7 +9,7 @@
   <ngx-typed-js [strings]="['Are you ready?']" [typeSpeed]="70" [showCursor]="false" (completed)="showYesBtn = true;">
     <h1 class="typing"></h1>
   </ngx-typed-js>
-  <div *ngIf="showYesBtn" class="btn" (click)="onYesClick()">Yes</div>
+  <div *ngIf="showYesBtn" class="yes-btn" (click)="onYesClick()">Yes</div>
 </div>
 <youtube-player [style.display]="(show ? 'block' : 'none')"
                 #ytPlayer

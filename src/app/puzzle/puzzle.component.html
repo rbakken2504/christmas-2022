@@ -1,1 +1,14 @@
-<p [style.color]="'white'">Puzzle Here</p>
+<div class="puzzle">
+  <app-problem></app-problem>
+</div>
+<div class="timer">
+  <app-timer></app-timer>
+  <form>
+    <div class="input-group input-group-lg mb-3">
+      <input type="text" class="form-control" placeholder="Your Answer" [(ngModel)]="answer" name="answer" />
+      <button class="btn btn-secondary" type="button" (click)="checkAnswer()">Submit</button>
+    </div>
+  </form>
+</div>
+
+
