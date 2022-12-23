@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import * as _ from 'lodash';
+import {delay, delayWhen, filter, Subject} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-puzzle',
@@ -48,14 +50,23 @@ export class PuzzleComponent {
     'nHpmMnQQMmHpRnHRmMJnnTShPzljzjSNmSDhLsNSPtSh'
   ];
   public answer: string | undefined;
+  public answerResult$ = new Subject();
+  public remainingAttempts = 10;
 
-  public checkAnswer() {
+  constructor(private _router: Router) {}
+
+  public async checkAnswer() {
+    this.remainingAttempts--;
     const expected = this._solve();
-    if (expected === parseInt(this.answer as string, 10)) {
-      alert('Correct!');
-    } else {
-      alert('WRONGGGGG');
+    const actual = parseInt(this.answer as string, 10);
+
+    if (expected === actual) {
+      await this._router.navigate(['congrats']);
     }
+
+    const msg = `Incorrect! That answer is too ${actual < expected ? 'low' : 'high'}! You have ${this.remainingAttempts} attempts left`;
+    this.answerResult$.next(msg);
+    setTimeout(() => this.answerResult$.next(null), 5000);
   }
 
   private _solve(): number {

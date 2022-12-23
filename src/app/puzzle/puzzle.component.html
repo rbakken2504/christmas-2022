@@ -8,6 +8,9 @@
       <input type="text" class="form-control" placeholder="Your Answer" [(ngModel)]="answer" name="answer" />
       <button class="btn btn-secondary" type="button" (click)="checkAnswer()">Submit</button>
     </div>
+    <ng-container *ngrxLet="answerResult$; let answerResult">
+      <div *ngIf="answerResult" class="incorrect-answer">{{answerResult}}</div>
+    </ng-container>
   </form>
 </div>
 

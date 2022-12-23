@@ -10,6 +10,11 @@ import { TimerComponent } from './timer/timer.component';
 import {CountdownComponent} from "ngx-countdown";
 import { ProblemComponent } from './problem/problem.component';
 import {FormsModule} from "@angular/forms";
+import {LetModule} from "@ngrx/component";
+import { CongratsComponent } from './congrats/congrats.component';
+import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
+import { BoardingPassComponent } from './boarding-pass/boarding-pass.component';
 
 @NgModule({
   declarations: [
@@ -17,17 +22,25 @@ import {FormsModule} from "@angular/forms";
     SawVideoComponent,
     PuzzleComponent,
     TimerComponent,
-    ProblemComponent
+    ProblemComponent,
+    CongratsComponent,
+    BoardingPassComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    YouTubePlayerModule,
-    NgxTypedJsModule,
-    CountdownComponent,
-    FormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        YouTubePlayerModule,
+        NgxTypedJsModule,
+        CountdownComponent,
+        FormsModule,
+        LetModule,
+        FontAwesomeModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(lib: FaIconLibrary) {
+    lib.addIcons(faStar);
+  }
+}

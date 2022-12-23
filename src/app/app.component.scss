@@ -8,3 +8,7 @@ body {
   font-size: 32px !important;
   color: white !important;
 }
+
+:host {
+  max-height: 98vh;
+}
