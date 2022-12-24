@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import * as _ from 'lodash';
-import {delay, delayWhen, filter, Subject} from "rxjs";
+import {delay, delayWhen, filter, map, Subject} from "rxjs";
 import {Router} from "@angular/router";
 
 @Component({
@@ -52,11 +52,17 @@ export class PuzzleComponent {
   public answer: string | undefined;
   public answerResult$ = new Subject();
   public remainingAttempts = 3;
+  public ATTEMPTS_KEY = 'REMAINING-ATTEMPTS';
 
-  constructor(private _router: Router) {}
+  constructor(private _router: Router) {
+    if (!!localStorage.getItem(this.ATTEMPTS_KEY)) {
+      this.remainingAttempts = parseInt(localStorage.getItem(this.ATTEMPTS_KEY) as string, 10);
+    }
+  }
 
   public async checkAnswer() {
     this.remainingAttempts--;
+    localStorage.setItem(this.ATTEMPTS_KEY, `${this.remainingAttempts}`);
     const expected = this._solve();
     const actual = parseInt(this.answer as string, 10);
 
@@ -72,7 +78,6 @@ export class PuzzleComponent {
 
     const msg = `Incorrect! That answer is too ${actual < expected ? 'low' : 'high'}! You have ${this.remainingAttempts} attempts left`;
     this.answerResult$.next(msg);
-    setTimeout(() => this.answerResult$.next(null), 5000);
   }
 
   private _solve(): number {
