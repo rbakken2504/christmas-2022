@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Unbounded', sans-serif;
+  color: darken(red, 10%);
+  background: black;
+  min-height: 100vh;
+  h1 {
+    font-size: 60px;
+  }
+  p {
+    font-size: 18px;
+  }
+  ::ng-deep {
+    .digit {
+      font-family: 'Orbitron', sans-serif;
+      color: darken(red, 10%);
+      text-shadow: 0 0 50px rgba(255, 0, 0, 1),  0 0 50px rgba(255, 0, 0, 0);
+      font-size: 200px;
+    }
+  }
+}

@@ -15,6 +15,7 @@ import { CongratsComponent } from './congrats/congrats.component';
 import {FaIconLibrary, FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {faStar} from "@fortawesome/free-solid-svg-icons/faStar";
 import { BoardingPassComponent } from './boarding-pass/boarding-pass.component';
+import { FailureComponent } from './failure/failure.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BoardingPassComponent } from './boarding-pass/boarding-pass.component';
     TimerComponent,
     ProblemComponent,
     CongratsComponent,
-    BoardingPassComponent
+    BoardingPassComponent,
+    FailureComponent
   ],
     imports: [
         BrowserModule,

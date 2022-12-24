@@ -61,7 +61,13 @@ export class PuzzleComponent {
     const actual = parseInt(this.answer as string, 10);
 
     if (expected === actual) {
+      localStorage.setItem('SOLVED-PUZZLE', '1');
       await this._router.navigate(['congrats']);
+    }
+
+    if (this.remainingAttempts <= 0) {
+      localStorage.setItem('FAILED-PUZZLE', '1');
+      await this._router.navigate(['failure']);
     }
 
     const msg = `Incorrect! That answer is too ${actual < expected ? 'low' : 'high'}! You have ${this.remainingAttempts} attempts left`;

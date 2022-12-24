@@ -16,21 +16,18 @@ export class TimerComponent implements OnInit {
   };
   private STORAGE_KEY = 'timer';
   private ONE_HOUR = 3600;
-  private DEBUG = false;
 
   ngOnInit() {
-    if (!this.DEBUG) {
-      let value = +localStorage.getItem(this.STORAGE_KEY)!! ?? this.ONE_HOUR;
-      if (value <= 0) value = this.ONE_HOUR;
-      this.config = { ...this.config, leftTime: value };
-    }
+    let value = +localStorage.getItem(this.STORAGE_KEY)!! ?? this.ONE_HOUR;
+    if (value <= 0) value = this.ONE_HOUR;
+    this.config = { ...this.config, leftTime: value };
   }
 
   public handleEvent(event: CountdownEvent) {
     if (event.action === 'done') {
       this.timerExpired.emit();
     }
-    if (event.action === 'notify' && !this.DEBUG) {
+    if (event.action === 'notify') {
       localStorage.setItem(this.STORAGE_KEY, `${event.left / 1000}`);
     }
   }

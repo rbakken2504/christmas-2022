@@ -2,6 +2,7 @@ import {AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren
 import { gsap } from 'gsap';
 import * as _ from "lodash";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {BoardingPassComponent} from "../boarding-pass/boarding-pass.component";
 
 @Component({
   selector: 'app-congrats',
@@ -11,6 +12,7 @@ import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 export class CongratsComponent implements AfterViewInit {
   public NUM_OF_STARS = 200;
   @ViewChild('header') headerElement: ElementRef | undefined;
+  @ViewChild(BoardingPassComponent, { read: ElementRef }) boardingPass: ElementRef | undefined;
   @ViewChildren('star', { read: ElementRef }) starElements: QueryList<ElementRef> | undefined;
 
   ngAfterViewInit() {
@@ -19,11 +21,17 @@ export class CongratsComponent implements AfterViewInit {
   }
 
   private animateText() {
-    gsap.from(this.headerElement?.nativeElement, 0.8, {
+    gsap.from(this.headerElement?.nativeElement, 0.6, {
+      scale: 0.4,
+      opacity: 0,
+      rotation: 45,
+      ease: "power1.out"
+    });
+    gsap.from(this.boardingPass?.nativeElement, 0.8, {
       scale: 0.4,
       opacity: 0,
       rotation: 15,
-      ease: "power4.out"
+      ease: "power1.out"
     });
   }
 

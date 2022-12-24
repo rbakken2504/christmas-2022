@@ -5,6 +5,4 @@ import {Component, Input} from '@angular/core';
   templateUrl: './boarding-pass.component.html',
   styleUrls: ['./boarding-pass.component.scss']
 })
-export class BoardingPassComponent {
-  @Input() name: string | undefined;
-}
+export class BoardingPassComponent {}

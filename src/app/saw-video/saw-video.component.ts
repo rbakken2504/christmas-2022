@@ -19,6 +19,7 @@ export class SawVideoComponent {
 
   public async onStateChange(evt: YT.OnStateChangeEvent) {
     if (evt.data === YT.PlayerState.ENDED) {
+      localStorage.setItem('PUZZLE-STARTED', '1');
       await this._router.navigate(['puzzle']);
     }
   }

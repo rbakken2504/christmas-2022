@@ -1,0 +1,6 @@
+<h1>Much disappointment for your epic failure</h1>
+<p>Because I am a merciful God, you shall still receive your gift.</p>
+<p>However, you must now wait 12 hours to see what it is.</p>
+<p>Come back to this page when the timer has expired for further instructions.</p>
+<countdown [config]="config" (event)="handleEvent($event)"></countdown>
+<app-boarding-pass *ngIf="showGift"></app-boarding-pass>
