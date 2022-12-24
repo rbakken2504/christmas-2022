@@ -7,7 +7,7 @@ import {CountdownConfig, CountdownEvent} from "ngx-countdown";
   styleUrls: ['./failure.component.scss']
 })
 export class FailureComponent implements OnInit {
-  private TWELVE_HOURS = 10;
+  private TWELVE_HOURS = 60 * 60 * 12;
   public config: CountdownConfig = {
     leftTime: this.TWELVE_HOURS,
     format: 'HH:mm:ss',

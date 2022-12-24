@@ -51,7 +51,7 @@ export class PuzzleComponent {
   ];
   public answer: string | undefined;
   public answerResult$ = new Subject();
-  public remainingAttempts = 10;
+  public remainingAttempts = 3;
 
   constructor(private _router: Router) {}
 
