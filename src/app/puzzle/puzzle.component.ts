@@ -80,6 +80,11 @@ export class PuzzleComponent {
     this.answerResult$.next(msg);
   }
 
+  public async onTimerExpired() {
+    localStorage.setItem('FAILED-PUZZLE', '1');
+    await this._router.navigate(['failure']);
+  }
+
   private _solve(): number {
     return this._puzzleInput.reduce((acc, cur) => {
       const mid = cur.length / 2;
